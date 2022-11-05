@@ -1,0 +1,185 @@
+#include<iostream>
+#include"IntСontainer.h"
+//#include<string>
+#include <exception>
+using namespace std;
+
+IntСontainer::IntСontainer(int length)
+{
+	
+	try
+	{
+		CheckingTheInput(length);
+	}
+	
+	catch (const exception& ex)
+	{
+		std::cout << "внимание." << ex.what() << std::endl;
+		std::cout << "ввидите новоевую длинну массива" << std::endl;
+
+		int i = 0;
+		while (i >= 1) 
+		{
+			std::cin >> length;
+			if (length <= 0)
+			{
+				std::cout << "ввидите нормальную длинну массива. -_- ну!" << std::endl;
+			}
+			else
+			{
+				i = 1;
+			}
+		};
+		
+	}
+	catch (...)
+	{
+		std::cout << "внимание. что то пошло не так 1"  << std::endl;
+	}
+	m_massiv = new int[length] {};
+	m_dlinna = length;
+}
+IntСontainer::~IntСontainer()
+{
+	delete[] m_massiv;
+}
+void IntСontainer :: DeleteCorrectly()
+{
+	delete[] m_massiv;
+	m_massiv = nullptr;
+	m_dlinna = 0;
+}
+int& IntСontainer::operator[](int index)//проверка индекса
+{
+	try
+	{
+		CheckingTheInput(m_dlinna, index);
+	}
+	catch (const exception& ex)
+	{
+		std::cout << "внимание." << ex.what() << std::endl;
+		std::cout << "ввидите новое значение" << std::endl;
+		std::cin >> index;
+	}
+	catch (...)
+	{
+		std::cout << "внимание. что то пошло не так 2" << std::endl;
+	}
+	return m_massiv[index];
+}	
+void IntСontainer::ResizeAndClear(int newdlinna)// изменяет размер массива. Все существующие элементы будут уничтожены
+{
+	DeleteCorrectly();
+	if (newdlinna <= 0)
+		return;
+	m_massiv = new int[newdlinna];
+	m_dlinna = newdlinna;
+}
+void IntСontainer::ResizeAndSave(int newdlinna)//изменяет размер массива. Все существующие элементы будут сохранены.
+{
+	if (newdlinna == m_dlinna)
+		return;
+	if (newdlinna <= 0)
+	{
+		DeleteCorrectly();
+		return;
+	}
+	int* data{ new int[newdlinna] };
+	if (m_dlinna > 0)
+	{
+		int elementsToCopy{ (newdlinna > m_dlinna) ? m_dlinna : newdlinna };
+		for (int index{ 0 }; index < elementsToCopy; ++index)
+			data[index] = m_massiv[index];
+	}
+	delete[] m_massiv;
+	m_massiv = data;
+	m_dlinna = newdlinna;
+}
+void IntСontainer::InsertBefore(int value, int index)
+{ 
+	try
+	{
+		CheckingTheInput(m_dlinna, index);
+	}
+	catch (const exception& ex)
+	{
+		std::cout << "внимание." << ex.what() << std::endl;
+	}
+	catch (...)
+	{
+		std::cout << "внимание. что то пошло не так 3" << std::endl;
+	}
+	int* data{ new int[m_dlinna + 1] };
+	for (int before{ 0 }; before < index; ++before)
+		data[before] = m_massiv[before];
+	data[index] = value;
+	for (int after{ index }; after < m_dlinna; ++after)
+		data[after + 1] = m_massiv[after];
+	delete[] m_massiv;
+	m_massiv = data;
+	++m_dlinna;
+}
+
+void IntСontainer::remove(int index)
+{
+	try
+	{
+		CheckingTheInput(m_dlinna,index);
+	}
+	catch(const char *ex)
+	{
+		std::cout<<"внимание."<< ex <<std::endl;
+		std::cout << "ввидите новое значение" << std::endl;
+		std::cin>> index;
+	}
+	catch (...)
+	{
+		std::cout << "внимание. что то пошло не так 4" << std::endl;
+	}
+	
+	if (m_dlinna == 1)
+	{
+		DeleteCorrectly();
+		return;
+	}
+	int* data{ new int[m_dlinna - 1] };
+
+	for (int before{ 0 }; before < index; ++before)
+		data[before] = m_massiv[before];
+	for (int after{ index + 1 }; after < m_dlinna; ++after)
+		data[after - 1] = m_massiv[after];
+	delete[] m_massiv;
+	m_massiv = data;
+	--m_dlinna;
+}
+void IntСontainer::insertAtBeginning(int value)
+{
+	InsertBefore(value, 0);
+}
+void IntСontainer::insertAtEnd(int value)
+{
+	InsertBefore(value, m_dlinna);
+}
+int IntСontainer::getLength() const
+{
+	return m_dlinna;
+}
+void IntСontainer::CheckingTheInput(int length)
+{
+	if (length <= 0)
+		throw exception("Ай-Яй-яй,\t(|)_0o_(|)\terror: Длинна не может быть меньше или равна 0");
+}
+void IntСontainer::CheckingTheInput(int length, int index)
+{
+	CheckingTheInput(length);
+
+	if (index > length )
+		throw exception("Ну кто так делает!!! Ай-Яй-яй,\t(|)_0o_(|) \t error: Индекс не можем быть больше длинны массива!");
+}
+void IntСontainer::print()
+{
+	for (int i{ 0 }; i < getLength(); ++i)
+		std::cout << m_massiv[i] << ' ';
+
+	std::cout << '\n';
+}
