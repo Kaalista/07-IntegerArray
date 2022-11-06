@@ -1,5 +1,5 @@
 #include<iostream>
-#include"IntÑontainer.h"
+#include"IntContainer.h"
 #include <exception>
 using namespace std;
 int main()
