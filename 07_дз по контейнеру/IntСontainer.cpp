@@ -31,7 +31,14 @@ IntContainer::IntContainer(int length)
 	{
 		std::cout << "внимание. что то пошло не так 1"  << std::endl;
 	}
-	m_massiv = new int[length] {};
+	try
+	{
+		m_massiv = new int[length] {};
+	}
+	catch (std::bad_alloc& ba)
+	{
+		std::cout << "внимание. что то пошло не так 1.1"<< ba.what() << '\n' << std::endl;
+	}
 	m_dlinna = length;
 }
 IntContainer::~IntContainer()
