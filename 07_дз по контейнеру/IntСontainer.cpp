@@ -1,10 +1,10 @@
 #include<iostream>
-#include"IntСontainer.h"
+#include"IntГ‘ontainer.h"
 //#include<string>
 #include <exception>
 using namespace std;
 
-IntСontainer::IntСontainer(int length)
+IntГ‘ontainer::IntГ‘ontainer(int length)
 {
 	
 	try
@@ -14,8 +14,8 @@ IntСontainer::IntСontainer(int length)
 	
 	catch (const exception& ex)
 	{
-		std::cout << "внимание." << ex.what() << std::endl;
-		std::cout << "ввидите новоевую длинну массива" << std::endl;
+		std::cout << "РІРЅРёРјР°РЅРёРµ." << ex.what() << std::endl;
+		std::cout << "РІРІРёРґРёС‚Рµ РЅРѕРІРѕРµРІСѓСЋ РґР»РёРЅРЅСѓ РјР°СЃСЃРёРІР°" << std::endl;
 
 		int i = 0;
 		while (i >= 1) 
@@ -23,7 +23,7 @@ IntСontainer::IntСontainer(int length)
 			std::cin >> length;
 			if (length <= 0)
 			{
-				std::cout << "ввидите нормальную длинну массива. -_- ну!" << std::endl;
+				std::cout << "РІРІРёРґРёС‚Рµ РЅРѕСЂРјР°Р»СЊРЅСѓСЋ РґР»РёРЅРЅСѓ РјР°СЃСЃРёРІР°. -_- РЅСѓ!" << std::endl;
 			}
 			else
 			{
@@ -34,22 +34,22 @@ IntСontainer::IntСontainer(int length)
 	}
 	catch (...)
 	{
-		std::cout << "внимание. что то пошло не так 1"  << std::endl;
+		std::cout << "РІРЅРёРјР°РЅРёРµ. С‡С‚Рѕ С‚Рѕ РїРѕС€Р»Рѕ РЅРµ С‚Р°Рє 1"  << std::endl;
 	}
 	m_massiv = new int[length] {};
 	m_dlinna = length;
 }
-IntСontainer::~IntСontainer()
+IntГ‘ontainer::~IntГ‘ontainer()
 {
 	delete[] m_massiv;
 }
-void IntСontainer :: DeleteCorrectly()
+void IntГ‘ontainer :: DeleteCorrectly()
 {
 	delete[] m_massiv;
 	m_massiv = nullptr;
 	m_dlinna = 0;
 }
-int& IntСontainer::operator[](int index)//проверка индекса
+int& IntГ‘ontainer::operator[](int index)//ГЇГ°Г®ГўГҐГ°ГЄГ  ГЁГ­Г¤ГҐГЄГ±Г 
 {
 	try
 	{
@@ -57,17 +57,17 @@ int& IntСontainer::operator[](int index)//проверка индекса
 	}
 	catch (const exception& ex)
 	{
-		std::cout << "внимание." << ex.what() << std::endl;
-		std::cout << "ввидите новое значение" << std::endl;
+		std::cout << "РІРЅРёРјР°РЅРёРµ." << ex.what() << std::endl;
+		std::cout << "РІРІРёРґРёС‚Рµ РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ" << std::endl;
 		std::cin >> index;
 	}
 	catch (...)
 	{
-		std::cout << "внимание. что то пошло не так 2" << std::endl;
+		std::cout << "РІРЅРёРјР°РЅРёРµ. С‡С‚Рѕ С‚Рѕ РїРѕС€Р»Рѕ РЅРµ С‚Р°Рє 2" << std::endl;
 	}
 	return m_massiv[index];
 }	
-void IntСontainer::ResizeAndClear(int newdlinna)// изменяет размер массива. Все существующие элементы будут уничтожены
+void IntГ‘ontainer::ResizeAndClear(int newdlinna)
 {
 	DeleteCorrectly();
 	if (newdlinna <= 0)
@@ -75,7 +75,7 @@ void IntСontainer::ResizeAndClear(int newdlinna)// изменяет размер массива. Все 
 	m_massiv = new int[newdlinna];
 	m_dlinna = newdlinna;
 }
-void IntСontainer::ResizeAndSave(int newdlinna)//изменяет размер массива. Все существующие элементы будут сохранены.
+void IntГ‘ontainer::ResizeAndSave(int newdlinna)
 {
 	if (newdlinna == m_dlinna)
 		return;
@@ -95,7 +95,7 @@ void IntСontainer::ResizeAndSave(int newdlinna)//изменяет размер массива. Все су
 	m_massiv = data;
 	m_dlinna = newdlinna;
 }
-void IntСontainer::InsertBefore(int value, int index)
+void IntГ‘ontainer::InsertBefore(int value, int index)
 { 
 	try
 	{
@@ -103,11 +103,11 @@ void IntСontainer::InsertBefore(int value, int index)
 	}
 	catch (const exception& ex)
 	{
-		std::cout << "внимание." << ex.what() << std::endl;
+		std::cout << "РІРЅРёРјР°РЅРёРµ." << ex.what() << std::endl;
 	}
 	catch (...)
 	{
-		std::cout << "внимание. что то пошло не так 3" << std::endl;
+		std::cout << "РІРЅРёРјР°РЅРёРµ. С‡С‚Рѕ С‚Рѕ РїРѕС€Р»Рѕ РЅРµ С‚Р°Рє 3" << std::endl;
 	}
 	int* data{ new int[m_dlinna + 1] };
 	for (int before{ 0 }; before < index; ++before)
@@ -120,7 +120,7 @@ void IntСontainer::InsertBefore(int value, int index)
 	++m_dlinna;
 }
 
-void IntСontainer::remove(int index)
+void IntГ‘ontainer::remove(int index)
 {
 	try
 	{
@@ -128,13 +128,13 @@ void IntСontainer::remove(int index)
 	}
 	catch(const char *ex)
 	{
-		std::cout<<"внимание."<< ex <<std::endl;
-		std::cout << "ввидите новое значение" << std::endl;
+		std::cout<<"РІРЅРёРјР°РЅРёРµ."<< ex <<std::endl;
+		std::cout << "РІРІРёРґРёС‚Рµ РЅРѕРІРѕРµ Р·РЅР°С‡РµРЅРёРµ" << std::endl;
 		std::cin>> index;
 	}
 	catch (...)
 	{
-		std::cout << "внимание. что то пошло не так 4" << std::endl;
+		std::cout << "РІРЅРёРјР°РЅРёРµ. С‡С‚Рѕ С‚Рѕ РїРѕС€Р»Рѕ РЅРµ С‚Р°Рє 4" << std::endl;
 	}
 	
 	if (m_dlinna == 1)
@@ -152,31 +152,31 @@ void IntСontainer::remove(int index)
 	m_massiv = data;
 	--m_dlinna;
 }
-void IntСontainer::insertAtBeginning(int value)
+void IntГ‘ontainer::insertAtBeginning(int value)
 {
 	InsertBefore(value, 0);
 }
-void IntСontainer::insertAtEnd(int value)
+void IntГ‘ontainer::insertAtEnd(int value)
 {
 	InsertBefore(value, m_dlinna);
 }
-int IntСontainer::getLength() const
+int IntГ‘ontainer::getLength() const
 {
 	return m_dlinna;
 }
-void IntСontainer::CheckingTheInput(int length)
+void IntГ‘ontainer::CheckingTheInput(int length)
 {
 	if (length <= 0)
-		throw exception("Ай-Яй-яй,\t(|)_0o_(|)\terror: Длинна не может быть меньше или равна 0");
+		throw exception("РђР№-РЇР№-СЏР№,\t(|)_0o_(|)\terror: Р”Р»РёРЅРЅР° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РјРµРЅСЊС€Рµ РёР»Рё СЂР°РІРЅР° 0");
 }
-void IntСontainer::CheckingTheInput(int length, int index)
+void IntГ‘ontainer::CheckingTheInput(int length, int index)
 {
 	CheckingTheInput(length);
 
 	if (index > length )
-		throw exception("Ну кто так делает!!! Ай-Яй-яй,\t(|)_0o_(|) \t error: Индекс не можем быть больше длинны массива!");
+		throw exception("РќСѓ РєС‚Рѕ С‚Р°Рє РґРµР»Р°РµС‚!!! РђР№-РЇР№-СЏР№,\t(|)_0o_(|) \t error: РРЅРґРµРєСЃ РЅРµ РјРѕР¶РµРј Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ РґР»РёРЅРЅС‹ РјР°СЃСЃРёРІР°!");
 }
-void IntСontainer::print()
+void IntГ‘ontainer::print()
 {
 	for (int i{ 0 }; i < getLength(); ++i)
 		std::cout << m_massiv[i] << ' ';
