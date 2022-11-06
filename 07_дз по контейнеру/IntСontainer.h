@@ -1,13 +1,10 @@
 #pragma once
-
-
 class IntСontainer
 {
 public:
 	IntСontainer() = default;
 	IntСontainer(int length);
 	~IntСontainer();
-
 	void DeleteCorrectly();
 	int& operator[](int index);
 	void ResizeAndClear(int newLength);
@@ -20,7 +17,6 @@ public:
 	void CheckingTheInput(int length);
 	void CheckingTheInput(int length, int index);
 	void print();
-
 private:
 	int m_dlinna;
 	int* m_massiv;
