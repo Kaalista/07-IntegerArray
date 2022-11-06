@@ -1,12 +1,12 @@
 #pragma once
 
 
-class IntÑontainer
+class IntСontainer
 {
 public:
-	IntÑontainer() = default;
-	IntÑontainer(int length);
-	~IntÑontainer();
+	IntСontainer() = default;
+	IntСontainer(int length);
+	~IntСontainer();
 
 	void DeleteCorrectly();
 	int& operator[](int index);
