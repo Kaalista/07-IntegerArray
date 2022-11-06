@@ -2,7 +2,6 @@
 #include"IntContainer.h"
 #include <exception>
 using namespace std;
-
 IntContainer::IntContainer(int length)
 {
 	try
