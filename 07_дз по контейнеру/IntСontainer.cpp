@@ -161,7 +161,7 @@ int IntContainer::getLength() const
 void IntContainer::CheckingTheInput(int length)
 {
 	if (length <= 0)
-		throw exception("Ай-Яй-яй,\t(|)_0o_(|)\terror: Длинна не может быть меньше или равна 0");
+		throw exception("Ай-Яй-яй,\t(|)_0o_(|) \t error: Длинна не может быть меньше или равна 0");
 }
 void IntContainer::CheckingTheInput(int length, int index)
 {
