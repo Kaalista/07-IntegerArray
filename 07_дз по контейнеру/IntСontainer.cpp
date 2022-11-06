@@ -1,17 +1,15 @@
 #include<iostream>
-#include"IntÑontainer.h"
+#include"IntContainer.h"
 //#include<string>
 #include <exception>
 using namespace std;
 
 IntÑontainer::IntÑontainer(int length)
 {
-	
 	try
 	{
 		CheckingTheInput(length);
 	}
-	
 	catch (const exception& ex)
 	{
 		std::cout << "внимание." << ex.what() << std::endl;
@@ -30,7 +28,6 @@ IntÑontainer::IntÑontainer(int length)
 				i = 1;
 			}
 		};
-		
 	}
 	catch (...)
 	{
@@ -143,7 +140,6 @@ void IntÑontainer::remove(int index)
 		return;
 	}
 	int* data{ new int[m_dlinna - 1] };
-
 	for (int before{ 0 }; before < index; ++before)
 		data[before] = m_massiv[before];
 	for (int after{ index + 1 }; after < m_dlinna; ++after)
@@ -172,7 +168,6 @@ void IntÑontainer::CheckingTheInput(int length)
 void IntÑontainer::CheckingTheInput(int length, int index)
 {
 	CheckingTheInput(length);
-
 	if (index > length )
 		throw exception("Ну кто так делает!!! Ай-Яй-яй,\t(|)_0o_(|) \t error: Индекс не можем быть больше длинны массива!");
 }
@@ -180,6 +175,5 @@ void IntÑontainer::print()
 {
 	for (int i{ 0 }; i < getLength(); ++i)
 		std::cout << m_massiv[i] << ' ';
-
 	std::cout << '\n';
 }
