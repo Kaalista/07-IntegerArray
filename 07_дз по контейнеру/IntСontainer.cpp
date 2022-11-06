@@ -4,7 +4,7 @@
 #include <exception>
 using namespace std;
 
-IntÑontainer::IntÑontainer(int length)
+IntContainer::IntContainer(int length)
 {
 	try
 	{
@@ -36,17 +36,17 @@ IntÑontainer::IntÑontainer(int length)
 	m_massiv = new int[length] {};
 	m_dlinna = length;
 }
-IntÑontainer::~IntÑontainer()
+IntContainer::~IntContainer()
 {
 	delete[] m_massiv;
 }
-void IntÑontainer :: DeleteCorrectly()
+void IntContainer :: DeleteCorrectly()
 {
 	delete[] m_massiv;
 	m_massiv = nullptr;
 	m_dlinna = 0;
 }
-int& IntÑontainer::operator[](int index)//ïðîâåðêà èíäåêñà
+int& IntContainer::operator[](int index)
 {
 	try
 	{
@@ -64,7 +64,7 @@ int& IntÑontainer::operator[](int index)//ïðîâåðêà èíäåêñà
 	}
 	return m_massiv[index];
 }	
-void IntÑontainer::ResizeAndClear(int newdlinna)
+void IntContainer::ResizeAndClear(int newdlinna)
 {
 	DeleteCorrectly();
 	if (newdlinna <= 0)
@@ -72,7 +72,7 @@ void IntÑontainer::ResizeAndClear(int newdlinna)
 	m_massiv = new int[newdlinna];
 	m_dlinna = newdlinna;
 }
-void IntÑontainer::ResizeAndSave(int newdlinna)
+void IntContainer::ResizeAndSave(int newdlinna)
 {
 	if (newdlinna == m_dlinna)
 		return;
@@ -92,7 +92,7 @@ void IntÑontainer::ResizeAndSave(int newdlinna)
 	m_massiv = data;
 	m_dlinna = newdlinna;
 }
-void IntÑontainer::InsertBefore(int value, int index)
+void IntContainer::InsertBefore(int value, int index)
 { 
 	try
 	{
@@ -117,7 +117,7 @@ void IntÑontainer::InsertBefore(int value, int index)
 	++m_dlinna;
 }
 
-void IntÑontainer::remove(int index)
+void IntContainer::remove(int index)
 {
 	try
 	{
@@ -148,30 +148,30 @@ void IntÑontainer::remove(int index)
 	m_massiv = data;
 	--m_dlinna;
 }
-void IntÑontainer::insertAtBeginning(int value)
+void IntContainer::insertAtBeginning(int value)
 {
 	InsertBefore(value, 0);
 }
-void IntÑontainer::insertAtEnd(int value)
+void IntContainer::insertAtEnd(int value)
 {
 	InsertBefore(value, m_dlinna);
 }
-int IntÑontainer::getLength() const
+int IntContainer::getLength() const
 {
 	return m_dlinna;
 }
-void IntÑontainer::CheckingTheInput(int length)
+void IntContainer::CheckingTheInput(int length)
 {
 	if (length <= 0)
 		throw exception("Ай-Яй-яй,\t(|)_0o_(|)\terror: Длинна не может быть меньше или равна 0");
 }
-void IntÑontainer::CheckingTheInput(int length, int index)
+void IntContainer::CheckingTheInput(int length, int index)
 {
 	CheckingTheInput(length);
 	if (index > length )
 		throw exception("Ну кто так делает!!! Ай-Яй-яй,\t(|)_0o_(|) \t error: Индекс не можем быть больше длинны массива!");
 }
-void IntÑontainer::print()
+void IntContainer::print()
 {
 	for (int i{ 0 }; i < getLength(); ++i)
 		std::cout << m_massiv[i] << ' ';
