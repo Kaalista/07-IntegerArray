@@ -1,5 +1,5 @@
 #include<iostream>
-#include"Int—ontainer.h"
+#include"Int√ëontainer.h"
 //#include<string>
 #include <exception>
 //#define  MRTDLL 
@@ -11,7 +11,7 @@ int main()
     setlocale(LC_ALL, "ru");
     int SIZE = 17;
 
-    Int—ontainer massinInt(SIZE);
+    Int√ëontainer massinInt(SIZE);
 
     for (int i{ 0 }; i < SIZE; ++i)
     {
@@ -24,7 +24,7 @@ int main()
    massinInt.insertAtEnd(4);
    massinInt.insertAtBeginning(35);
    massinInt.print();
-    std::cout<< "‚ÒÂ ÔÓ¯ÎÓ ÛÒÔÂ¯ÌÓ!"<< std::endl;
+    std::cout<< "–≤—Å–µ –ø—Ä–æ—à–ª–æ —É—Å–ø–µ—à–Ω–æ!"<< std::endl;
 
     return 0;
 }
