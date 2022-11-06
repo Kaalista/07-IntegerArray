@@ -1,16 +1,11 @@
 #include<iostream>
 #include"IntÑontainer.h"
-//#include<string>
 #include <exception>
-//#define  MRTDLL 
-//#define  _M_CEE
-
 using namespace std;
 int main()
 {
     setlocale(LC_ALL, "ru");
     int SIZE = 17;
-
     IntÑontainer massinInt(SIZE);
 
     for (int i{ 0 }; i < SIZE; ++i)
@@ -24,7 +19,7 @@ int main()
    massinInt.insertAtEnd(4);
    massinInt.insertAtBeginning(35);
    massinInt.print();
-    std::cout<< "все прошло успешно!"<< std::endl;
+   std::cout<< "все прошло успешно!"<< std::endl;
 
-    return 0;
+   return 0;
 }
