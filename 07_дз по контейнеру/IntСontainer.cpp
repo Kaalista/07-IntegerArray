@@ -1,6 +1,5 @@
 #include<iostream>
 #include"IntContainer.h"
-//#include<string>
 #include <exception>
 using namespace std;
 
