@@ -37,7 +37,7 @@ IntContainer::IntContainer(int length)
 	}
 	catch (std::bad_alloc& ba)
 	{
-		std::cout << "внимание. что то пошло не так 1.1"<< ba.what() << '\n' << std::endl;
+		std::cerr << "внимание. что то пошло не так 1.1"<< ba.what() << '\n' << std::endl;
 	}
 	m_dlinna = length;
 }
