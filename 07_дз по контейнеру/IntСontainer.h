@@ -1,24 +1,24 @@
 #pragma once
 
 
-class IntСontainer
+class IntГ‘ontainer
 {
 public:
-	IntСontainer() = default;
-	IntСontainer(int length);
-	~IntСontainer();
+	IntГ‘ontainer() = default;
+	IntГ‘ontainer(int length);
+	~IntГ‘ontainer();
 
-	void DeleteCorrectly();// стирать m_data в nullptr 
-	int& operator[](int index);//проверка индекса
-	void ResizeAndClear(int newLength);// изменяет размер массива. Все существующие элементы будут уничтожены
-	void ResizeAndSave(int newLength);//изменяет размер массива. Все существующие элементы будут сохранены.
-	void InsertBefore(int value, int index);//вставить элемент
-	void remove(int index);//удалить элемент
-	void insertAtBeginning(int value);//Вставить в начало
-	void insertAtEnd(int value);//вставить в конец
-	int getLength() const;//вернуть длинну
-	void CheckingTheInput(int length);// проверка входных данных на 0 или меньше 0
-	void CheckingTheInput(int length, int index);// проверка входных данных на 0 или меньше 0 и на соответсвие индексу
+	void DeleteCorrectly();
+	int& operator[](int index);
+	void ResizeAndClear(int newLength);
+	void ResizeAndSave(int newLength);
+	void InsertBefore(int value, int index);
+	void remove(int index);
+	void insertAtBeginning(int value);
+	void insertAtEnd(int value);
+	int getLength() const;
+	void CheckingTheInput(int length);
+	void CheckingTheInput(int length, int index);
 	void print();
 
 private:
